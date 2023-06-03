@@ -1,5 +1,7 @@
 <?php
 
+use Store\Store;
+
 require_once 'Animals/Pet.php';
 require_once 'Animals/Traits/TraitFriendly.php';
 require_once 'Animals/Interfaces/InterfaceTrainable.php';
@@ -28,16 +30,14 @@ $puppy->sleep();
 
 echo "<br /><br />";
 
-$store = new \Store\Store();
+
+$store = Store::getInstance();
+$store2 = Store::getInstance();
+
 $dog = new \Animals\Pet("Rex", "Dog", 300);
 $cat = new \Animals\Pet("Whiskers", "Cat", 200);
 
-$store->addPet($dog);
-$store->addPet($cat);
-
 $person = new \People\Person("Bob", 10000);
-$dog = new \Animals\Pet("Rex", "Dog", 900);
-$cat = new \Animals\Pet("Whiskers", "Cat", 1700);
 
 $person->buyPet($dog);
 $person->buyPet($cat);
@@ -76,6 +76,7 @@ $pets[] = $dragon;
 $pets[] = $new_cat;
 $pets[] = $new_dog;
 
+
 foreach ($pets as $pet) {
     $pet->makeSound();
 }
@@ -86,6 +87,8 @@ $goldy = new \Animals\Species\GoldFish("Goldy", "Fish", 20);
 $goldy->swim();
 $goldy->doTrick();
 $goldy->makeSound();
+
+echo "<br /><br />";
 
 $parrot = new \Animals\Species\Parrot("Tropico", "Parrot", 7990);
 $eagle = new \Animals\Species\Eagle("Desert", "Eagle", 8990);
@@ -98,3 +101,5 @@ $eagle->makeSound();
 echo "<br /><br />";
 
 $new_dog->wagTail();
+
+echo "<br /><br />";
