@@ -1,5 +1,9 @@
 <?php
 
+namespace Animals\Species;
+
+use Animals\Pet;
+
 class Cat extends Pet
 {
 

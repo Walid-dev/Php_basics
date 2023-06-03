@@ -1,5 +1,10 @@
 <?php
 
+namespace People;
+
+use Animals\Pet;
+
+
 class Person
 {
     private $name;
@@ -65,7 +70,7 @@ class Person
         if (in_array($mood, $validMoods)) {
             $this->mood = $mood;
         } else {
-            throw new InvalidArgumentException("Invalid mood state.");
+            throw new \InvalidArgumentException("Invalid mood state.");
         }
     }
 

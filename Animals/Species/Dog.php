@@ -1,7 +1,12 @@
 <?php
-require_once 'InterfaceTrainable.php';
-require_once 'TraitFriendly.php';
 
+
+namespace Animals\Species;
+
+
+use Animals\Pet;
+use Animals\Interfaces\InterfaceTrainable;
+use Animals\Traits\TraitFriendly;
 
 
 class Dog extends Pet implements InterfaceTrainable

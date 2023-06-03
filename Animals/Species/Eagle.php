@@ -1,10 +1,10 @@
 <?php
 
-require_once 'AbstractBird.php';
+namespace Animals\Species;
 
-
-class Parrot extends AbstractBird
+class Eagle extends AbstractBird
 {
+
     public function __construct($name, $type, $price)
     {
         parent::__construct($name, $type, $price);
@@ -12,11 +12,11 @@ class Parrot extends AbstractBird
 
     public function fly()
     {
-        echo $this->name . " is flying hight in the sky <br/>";
+        echo $this->name . " is soaring through the sky";
     }
 
     public function makeSound()
     {
-        echo $this->name . " Squawk Squawk <br/>";
+        echo $this->name . " Screech!";
     }
 }

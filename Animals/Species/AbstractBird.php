@@ -1,6 +1,8 @@
 <?php
 
-require_once 'Pet.php';
+namespace Animals\Species;
+
+use Animals\Pet;
 
 abstract class AbstractBird extends Pet
 {

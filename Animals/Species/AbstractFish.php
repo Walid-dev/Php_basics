@@ -1,6 +1,8 @@
 <?php
 
-require_once 'Pet.php';
+namespace Animals\Species;
+
+use Animals\Pet;
 
 // Declare our abstract Fish class
 abstract class Fish extends Pet

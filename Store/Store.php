@@ -1,5 +1,7 @@
 <?php
 
+namespace Store;
+
 class Store
 {
     public $pets = [];

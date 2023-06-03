@@ -1,6 +1,10 @@
 <?php
 
+namespace Animals\Species;
+
+
 require_once 'AbstractFish.php';
+
 
 class GoldFish extends Fish
 {

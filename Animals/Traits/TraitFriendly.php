@@ -1,5 +1,7 @@
 <?php
 
+namespace Animals\Traits;
+
 trait TraitFriendly
 {
     public function wagTail()

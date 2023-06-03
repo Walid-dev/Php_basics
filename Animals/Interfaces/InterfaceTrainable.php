@@ -1,5 +1,7 @@
 <?php
 
+namespace Animals\Interfaces;
+
 interface InterfaceTrainable
 {
 

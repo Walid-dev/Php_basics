@@ -1,4 +1,6 @@
 <?php
+
+namespace Animals;
 // Our PHP party starts here. The "<?php" is the DJ who kicks off the music.
 
 // Technical: We're defining a class named 'Pet', which is a blueprint for any pet that we might want to create in our application.
