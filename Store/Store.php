@@ -2,44 +2,48 @@
 
 namespace Store;
 
-use Animals\Pet;
-
+// Task #14: Singleton Design Pattern
+// The 'Store' class follows the Singleton pattern, ensuring only a single instance exists throughout the application.
 class Store
 {
+    private $inventory = [];
     private static $instance;
-    private $pets = [];
+
+    private function __construct()
+    {
+    }
 
     public static function getInstance()
     {
         if (self::$instance === null) {
-            self::$instance = new self();
+            self::$instance = new Store();
         }
-
         return self::$instance;
     }
 
     public function addPet($pet)
     {
-        $this->pets[] = $pet;
+        $this->inventory[] = $pet;
     }
 
-    public function getPetsCount()
+    public function hasPet($pet)
     {
-        return count($this->pets);
+        return in_array($pet, $this->inventory);
     }
 
-    public function sellPet($petToSell, $person)
+    public function removePet($pet)
     {
-        foreach ($this->pets as $index => $pet) {
-            if ($pet === $petToSell) {
-                if ($person->buyPet($pet)) {
-                    unset($this->pets[$index]);
-                    echo "Sold {$pet->name} to {$person->name}!";
-                }
-                return;
-            }
+        $key = array_search($pet, $this->inventory);
+        if ($key !== false) {
+            unset($this->inventory[$key]);
         }
+    }
 
-        echo "Sorry, we don't have {$petToSell->name} in our store.";
+    public function displayInventory()
+    {
+        echo "Current inventory:<br />";
+        foreach ($this->inventory as $pet) {
+            echo "{$pet->name}, the {$pet->type}!<br />";
+        }
     }
 }

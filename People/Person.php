@@ -3,8 +3,10 @@
 namespace People;
 
 use Animals\Pet;
+use Store\Store;
 
-
+// Task #3: Composition
+// The 'Person' class is composed with instances of the 'Pet' class.
 class Person
 {
     private $name;
@@ -21,10 +23,21 @@ class Person
 
     public function buyPet(Pet $pet)
     {
-        if ($this->money >= $pet->price) {
-            $this->pets[] = $pet;
-            $this->money -= $pet->price;
+        // We first check if the store has the pet for sale
+        $store = Store::getInstance();
+        if (!$store->hasPet($pet)) {
+            echo "Sorry, {$pet->name} is not available in the store. <br/>";
+            return false;
+        }
 
+        // Then we check if the person can afford the pet
+        if ($this->money >= $pet->getPrice()) {
+            $this->pets[] = $pet;
+            $this->money -= $pet->getPrice();
+
+            // Removes pet from the store's inventory
+            $store->removePet($pet);
+    
             echo "{$this->name} has successfully bought {$pet->name}! <br/>";
             $this->changeMood("Happy");
             return true;
@@ -42,27 +55,6 @@ class Person
             echo "{$pet->name}, the {$pet->type}!<br />";
         }
     }
-
-    public function sellPet(Pet $petToSell, Person $buyer)
-    {
-        // Check if the person has the pet they try to sell
-        $key = array_search($petToSell, $this->pets);
-
-        // If pet is found so the person can sell the pet
-        if ($key !== false) {
-            if ($buyer->buyPet($petToSell)) { // checks if the buyer can buy the pet
-                unset($this->pets[$key]); // If buyer can buy the pet, then remove it from the seller's pets list
-                $this->changeMood("Happy");
-                echo "Sold {$petToSell->name} to {$buyer->name}! <br/>";
-            } else {
-                echo "{$buyer->name} doesn't have enough money to buy {$petToSell->name}.<br />";
-                $this->changeMood("Sad");
-            }
-        } else {
-            echo "{$this->name} doesn't own {$petToSell->name}.<br />";
-        }
-    }
-
 
     public function changeMood($mood)
     {
