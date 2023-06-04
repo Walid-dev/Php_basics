@@ -23,7 +23,7 @@ class Person
     // A static method can be called on the class itself, not just on an instance. Here, it implements the singleton design pattern (ensuring only a single instance of this class exists at a time).
     public static function getInstance(int $age, string $name): Person
     {
-        echo 'Person::getInstance called', "\n";
+        echo 'Person::getInstance called', "<\br>";
 
         // If an instance of this class doesn't already exist, one is created.
         if (!self::$instance) {
@@ -72,7 +72,7 @@ class Developer extends Person
     // This static method overrides the parent's method to provide Developer-specific functionality.
     public static function getInstance(int $age, string $name): Person
     {
-        echo 'Developer::getInstance called', "\n";
+        echo 'Developer::getInstance called', "<\br>";
 
         // If an instance of this class doesn't already exist, one is created.
         if (!self::$instance_developer) {
@@ -111,9 +111,9 @@ $abdullah = Developer::getInstance(30, 'Abdullah');
 $alex = Person::getInstance(30, 'Alex');
 
 // Print the names of the instances.
-echo $walid->getName(), "\n";  // Outputs "Walid"
-echo $abdullah->getName(), "\n";  // Outputs "Abdullah"
-echo $alex->getName(), "\n";  // Outputs "Alex"
+echo $walid->getName(), "<\br>";  // Outputs "Walid"
+echo $abdullah->getName(), "<\br>";  // Outputs "Abdullah"
+echo $alex->getName(), "<\br>";  // Outputs "Alex"
 
 
 // This code covers concepts such as data types, classes, inheritance, encapsulation, properties, methods, 

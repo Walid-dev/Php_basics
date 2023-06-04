@@ -3,11 +3,12 @@
 namespace People;
 
 use Animals\Pet;
+use Patterns\Observers\Observer;
 use Store\Store;
 
 // Task #3: Composition
 // The 'Person' class is composed with instances of the 'Pet' class.
-class Person
+class Person implements Observer
 {
     private $name;
     private $money;
@@ -29,15 +30,15 @@ class Person
             echo "Sorry, {$pet->name} is not available in the store. <br/>";
             return false;
         }
+        
 
         // Then we check if the person can afford the pet
         if ($this->money >= $pet->getPrice()) {
             $this->pets[] = $pet;
             $this->money -= $pet->getPrice();
-
-            // Removes pet from the store's inventory
+           
             $store->removePet($pet);
-    
+
             echo "{$this->name} has successfully bought {$pet->name}! <br/>";
             $this->changeMood("Happy");
             return true;
@@ -47,6 +48,11 @@ class Person
             return false;
         }
     }
+
+    public function update(\Patterns\Observers\Subject $subject)
+    {
+        echo $this->name . ", a pet was just sold! Check out our other pets on sale!</br>";
+    }    
 
     public function showPets()
     {

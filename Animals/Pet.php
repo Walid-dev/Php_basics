@@ -49,22 +49,22 @@ class Pet
     // Various behaviors of the pet
     public function introduce_pet()
     {
-        echo $this->name . " is a " . $this->type . "\n";
+        echo $this->name . " is a " . $this->type . "</br>";
     }
 
     public function eat()
     {
-        echo $this->name . " is eating...", "\n";
+        echo $this->name . " is eating...", "</br>";
     }
 
     public function play()
     {
-        echo $this->name . " is playing...\n";
+        echo $this->name . " is playing...</br>";
     }
 
     public function sleep()
     {
-        echo $this->name . " is sleeping...\n";
+        echo $this->name . " is sleeping...</br>";
     }
 
     public function makeSound()

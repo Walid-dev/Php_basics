@@ -118,7 +118,7 @@ class PersonRepository
 $people = PersonRepository::getPeople();
 
 foreach ($people as $person) {
-    echo $person->sayHello(), "\n";
+    echo $person->sayHello(), "<\br>";
     $person->sayGoodbye();
 }
 

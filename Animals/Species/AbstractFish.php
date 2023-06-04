@@ -9,6 +9,6 @@ abstract class Fish extends Pet
 {
     public function swim()
     {
-        echo $this->name . " is swimming...\n <br/>";
+        echo $this->name . " is swimming...<\br> <br/>";
     }
 }

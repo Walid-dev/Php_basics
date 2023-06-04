@@ -1,6 +1,6 @@
 <?php
 
-namespace Animals\Factories;
+namespace Patterns\Factories;
 
 use Animals\Pet;
 use Animals\Species\Dog;

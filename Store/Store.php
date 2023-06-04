@@ -2,13 +2,19 @@
 
 namespace Store;
 
+use Patterns\Observers\Subject;
+use Patterns\Observers\Observer;
+
+
 // Task #14: Singleton Design Pattern
 // The 'Store' class follows the Singleton pattern, ensuring only a single instance exists throughout the application.
-class Store
+class Store implements Subject
 {
     private $inventory = [];
     private static $instance;
     private static $petSoldInventory = [];
+
+    private $observers = [];
 
     private function __construct()
     {
@@ -43,6 +49,8 @@ class Store
         if ($key !== false) {
             unset($this->inventory[$key]);
             self::addPetToSoldInventory($pet);
+            $this->notify();
+            
         }
     }
 
@@ -60,5 +68,29 @@ class Store
         foreach (self::$petSoldInventory as $pet) {
             echo "{$pet->name}, the {$pet->type}!<br />";
         }
+    }
+
+    public function attach(Observer $observer)
+    {
+        $this->observers[] = $observer;
+    }
+
+    public function detach(Observer $observer)
+    {
+        $this->observers = array_filter($this->observers, function ($a) use ($observer) {
+            return $a !== $observer;
+        });
+    }
+
+    public function notify()
+    {
+        foreach ($this->observers as $observer) {
+            $observer->update($this);
+        }
+    }
+
+    public function getObservers()
+    {
+        return $this->observers;
     }
 }

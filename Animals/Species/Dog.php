@@ -28,7 +28,7 @@ class Dog extends Pet implements InterfaceTrainable
 
     public function bark()
     {
-        echo "{$this->name} is barking Woaf! Woaf! <br/>";
+        echo "{$this->name} is barking Woaf! Woaf! <br/><br/>";
     }
 
     public function isTrained()
@@ -43,6 +43,6 @@ class Dog extends Pet implements InterfaceTrainable
 
     public function makeSound()
     {
-        echo $this->name . ": Woof! Woof! <br/>";
+        echo $this->name . ": Woof! Woof! <br/><br/>";
     }
 }
