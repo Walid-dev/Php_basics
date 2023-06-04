@@ -145,5 +145,10 @@ $listOfAllPetsEverCreated = \Animals\Pet::displayAllPets();
 
 echo "<br /><br />";
 
-echo "Total pets created: " . $allPetsEverCreated . "\n";
+echo "Total pets created:" . $allPetsEverCreated . "\n";
+
+echo "<br /><br />";
+
 $listOfAllPetsEverCreated;
+
+$store->displaySoldInventory();

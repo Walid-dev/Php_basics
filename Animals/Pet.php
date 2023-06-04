@@ -40,9 +40,9 @@ class Pet
     // Display all pets ever created
     public static function displayAllPets()
     {
-        echo "All pets ever created:\n";
+        echo "All pets ever created: </br>";
         foreach (self::$allPets as $pet) {
-            echo $pet->name . ", the " . $pet->type . "\n";
+            echo $pet->name . ", the " . $pet->type . "</br>";
         }
     }
 

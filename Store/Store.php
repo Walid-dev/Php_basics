@@ -8,6 +8,7 @@ class Store
 {
     private $inventory = [];
     private static $instance;
+    private static $petSoldInventory = [];
 
     private function __construct()
     {
@@ -26,6 +27,11 @@ class Store
         $this->inventory[] = $pet;
     }
 
+    public static function addPetToSoldInventory($pet)
+    {
+        self::$petSoldInventory[] = $pet;
+    }
+
     public function hasPet($pet)
     {
         return in_array($pet, $this->inventory);
@@ -36,13 +42,22 @@ class Store
         $key = array_search($pet, $this->inventory);
         if ($key !== false) {
             unset($this->inventory[$key]);
+            self::addPetToSoldInventory($pet);
         }
     }
 
     public function displayInventory()
     {
-        echo "Current inventory:<br />";
+        echo 'Current inventory:<br />';
         foreach ($this->inventory as $pet) {
+            echo "{$pet->name}, the {$pet->type}!<br />";
+        }
+    }
+
+    public function displaySoldInventory()
+    {
+        echo 'Inventory of Sold Pets:<br />';
+        foreach (self::$petSoldInventory as $pet) {
             echo "{$pet->name}, the {$pet->type}!<br />";
         }
     }
