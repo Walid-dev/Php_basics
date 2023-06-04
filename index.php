@@ -4,8 +4,10 @@
 // 'require_once' is used to include PHP files. These are the classes that will be needed to run the script.
 
 use Store\Store;
+use Animals\Factories\PetFactory;
 
 require_once 'Animals/Pet.php';
+require_once 'Animals/Factories/PetFactory.php';
 require_once 'Animals/Traits/TraitFriendly.php';
 require_once 'Animals/Interfaces/InterfaceTrainable.php';
 require_once 'Store/Store.php';
@@ -19,14 +21,14 @@ require_once 'Animals/Species/Eagle.php';
 // Task #2: Basic principles of classes and objects
 // Here, we create new instances of the 'Pet' class.
 
-$dragon = new \Animals\Pet("Sparky", "Dragon", 5000);
+$dragon = PetFactory::createPet("Sparky", "Dragon", 5000);
 $dragon->eat();
 $dragon->play();
 $dragon->sleep();
 
 echo "<br /><br />";
 
-$puppy = new \Animals\Pet("Puppy", "Labrador", 3000);
+$puppy = PetFactory::createPet("Puppy", "Labrador", 3000);
 $puppy->introduce_pet();
 $puppy->eat();
 $puppy->play();
@@ -43,7 +45,7 @@ $store2 = Store::getInstance();
 // Task #1: Understanding PHP OOP fundamentals
 // Here, we create new instances of the 'Pet' and 'Person' classes. These instances are also known as objects.
 
-$dog = new \Animals\Pet("Rex", "Dog", 300);
+$dog = PetFactory::createPet("Rex", "Dog", 300);
 $cat = new \Animals\Pet("Whiskers", "Cat", 200);
 
 $person = new \People\Person("Bob", 10000);
@@ -74,7 +76,7 @@ echo "<br /><br />";
 // Task #6: Inheritance
 // We instantiate objects of classes that inherit from the 'Pet' class.
 
-$new_dog = new \Animals\Species\Dog("Lassie", "Dog", 4000, "Collie");
+$new_dog = new \Animals\Species\Dog("Lassie", "Dog", 4000, "Berger Allemand", true);
 $person->buyPet($new_dog);
 $new_dog->bark();
 
@@ -83,7 +85,7 @@ $new_dog->bark();
 
 echo $new_dog->isTrained() ? "I'm trained!\n <br/>" : "I'm not trained!\n <br/>";
 
-$new_cat = new \Animals\Species\Cat("Tom", "Cat", 2200, "Degoutiere");
+$new_cat = new \Animals\Species\Cat("Tom", "Cat", 2200, "Degoutiere", true);
 $person->buyPet($new_cat);
 
 echo "<br /><br />";

@@ -12,7 +12,7 @@ class Cat extends Pet
 
     public function __construct($name, $type, $price, $breed, $isIndependent = true)
     {
-        parent::__construct($name, $type, $price, $breed);
+        parent::__construct($name, $type, $price);
 
         $this->breed = $breed;
         $this->isIndependent = $isIndependent;;

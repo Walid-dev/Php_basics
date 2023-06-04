@@ -20,7 +20,7 @@ class Dog extends Pet implements InterfaceTrainable
     public function __construct($name, $type, $price, $breed, $isTrained = false)
     {
 
-        parent::__construct($name, $type, $price, $breed);
+        parent::__construct($name, $type, $price);
 
         $this->breed = $breed;
         $this->isTrained = $isTrained;
