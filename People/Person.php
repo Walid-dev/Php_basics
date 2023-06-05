@@ -6,8 +6,6 @@ use Animals\Pet;
 use Patterns\Observers\Observer;
 use Store\Store;
 
-// Task #3: Composition
-// The 'Person' class is composed with instances of the 'Pet' class.
 class Person implements Observer
 {
     private $name;
@@ -24,21 +22,9 @@ class Person implements Observer
 
     public function buyPet(Pet $pet)
     {
-        // We first check if the store has the pet for sale
-        $store = Store::getInstance();
-        if (!$store->hasPet($pet)) {
-            echo "Sorry, {$pet->name} is not available in the store. <br/>";
-            return false;
-        }
-        
-
-        // Then we check if the person can afford the pet
         if ($this->money >= $pet->getPrice()) {
             $this->pets[] = $pet;
             $this->money -= $pet->getPrice();
-           
-            $store->removePet($pet);
-
             echo "{$this->name} has successfully bought {$pet->name}! <br/>";
             $this->changeMood("Happy");
             return true;
@@ -47,6 +33,15 @@ class Person implements Observer
             echo "Sorry, {$this->name} can't afford {$pet->name}. <br/>";
             return false;
         }
+    }
+
+    public function sellPet(Pet $pet, Person $buyer)
+    {
+        if (($key = array_search($pet, $this->pets)) !== false) {
+            unset($this->pets[$key]);
+            return $buyer->buyPet($pet);
+        }
+        return false;
     }
 
     public function update(\Patterns\Observers\Subject $subject)

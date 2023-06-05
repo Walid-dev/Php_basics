@@ -130,4 +130,26 @@ $listOfAllPetsEverCreated;
 
 echo "<br /><br />";
 
+// Task #17 Using Facade Design Pattern
+
+// Initialize Facade with store
+$petHandlingFacade = new Facades\PetHandlingFacade($store);
+
+// Creating a new pet using PetFactory
+$elephant = PetFactory::createPet("Dumbo", "Elephant", 15000);
+
+// Adding the new pet to the store using the facade
+$petHandlingFacade->addPetToStore($elephant);
+
+// Buying the new pet using the facade
+$petHandlingFacade->buyPet($fatou, $elephant);
+
+// Now let's make the pet perform its unique sound
+$petHandlingFacade->petMakeSound($elephant);
+
+
+echo "<br /><br />";
+
 $store->displaySoldInventory();
+
+echo "<br /><br />";
