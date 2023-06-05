@@ -45,4 +45,9 @@ class Dog extends Pet implements InterfaceTrainable
     {
         echo $this->name . ": Woof! Woof! <br/>";
     }
+
+    public function play()
+    {
+        echo $this->name . " is playing with a ball.<br />";
+    }
 }
