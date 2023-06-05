@@ -12,6 +12,6 @@ class GoldFish extends Fish
     // But let's say all GoldFish have a special trick. Let's add that.
     public function doTrick()
     {
-        echo $this->name . " is doing a somersault!<\br>";
+        echo $this->name . " is doing a somersault! </br>";
     }
 }

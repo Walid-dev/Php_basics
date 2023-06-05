@@ -14,6 +14,6 @@ Task #13: Error handling in PHP OOP
 Task #14: Singleton Design Pattern
 Task #15: Factory Design Pattern
 Task #16: Observer Design Pattern
-Task #17: Strategy Design Pattern
-Task #18: Facade Design Pattern
-Task #19: Template Method Design Pattern
+Task #17: Facade Design Pattern
+Task #18: Template Method Design Pattern
+Task #19: Strategy Design Pattern

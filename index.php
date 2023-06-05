@@ -3,14 +3,7 @@
 use Store\Store;
 use Patterns\Factories\PetFactory;
 
-spl_autoload_register(function ($class) {
-    $root = dirname(__FILE__);  // get the parent directory
-    $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
-    if (is_readable($file)) {
-        require $file;
-    }
-});
-
+require_once 'autoloader.php';
 
 $dragon = PetFactory::createPet("Sparky", "Dragon", 5000);
 $dragon->eat();
@@ -45,7 +38,6 @@ $store->attach($fatou);
 
 echo "Number of observers: " . count($store->getObservers()) . "</br></br>";
 
-
 if ($store->hasPet($dog)) {
     $bob->buyPet($dog);
     $store->removePet($dog);
@@ -76,7 +68,7 @@ $new_dog = new \Animals\Species\Dog("Lassie", "Dog", 4000, "Berger Allemand", tr
 $bob->buyPet($new_dog);
 $new_dog->bark();
 
-echo $new_dog->isTrained() ? "I'm trained!<\br> <br/>" : "I'm not trained!<\br> <br/>";
+echo $new_dog->isTrained() ? "I'm trained!" : "I'm not trained!";
 
 $new_cat = new \Animals\Species\Cat("Tom", "Cat", 2200, "Degoutiere", true);
 
@@ -132,9 +124,7 @@ $listOfAllPetsEverCreated = \Animals\Pet::displayAllPets();
 
 echo "<br /><br />";
 
-echo "Total pets created:" . $allPetsEverCreated . "<\br>";
-
-echo "<br /><br />";
+echo "Total pets created: " . $allPetsEverCreated;
 
 $listOfAllPetsEverCreated;
 

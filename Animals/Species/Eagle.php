@@ -24,13 +24,13 @@ class Eagle extends AbstractBird
     // This demonstrates how classes that inherit from an abstract class are forced to implement its abstract methods.
     public function fly()
     {
-        echo $this->name . " is soaring through the sky";
+        echo $this->name . " is soaring through the sky </br>";
     }
 
     // Task #2: Basic principles of classes and objects
     // This is a method of the Eagle class. It allows an Eagle object to make a sound.
     public function makeSound()
     {
-        echo $this->name . " Screech!";
+        echo $this->name . " Screech! </br>";
     }
 }
