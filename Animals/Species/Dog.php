@@ -7,6 +7,7 @@ namespace Animals\Species;
 use Animals\Pet;
 use Animals\Interfaces\InterfaceTrainable;
 use Animals\Traits\TraitFriendly;
+use Animals\Behaviours\DogSound;
 
 
 class Dog extends Pet implements InterfaceTrainable
@@ -24,6 +25,7 @@ class Dog extends Pet implements InterfaceTrainable
 
         $this->breed = $breed;
         $this->isTrained = $isTrained;
+        $this->setSoundBehaviour(new DogSound()); 
     }
 
     public function bark()
@@ -43,8 +45,9 @@ class Dog extends Pet implements InterfaceTrainable
 
     public function makeSound()
     {
-        echo $this->name . ": Woof! Woof! <br/>";
+        $this->soundBehaviour->makeSound();
     }
+    
 
     public function play()
     {

@@ -3,6 +3,7 @@
 namespace Animals\Species;
 
 use Animals\Pet;
+use Animals\Behaviours\CatSound;
 
 class Cat extends Pet
 {
@@ -15,7 +16,10 @@ class Cat extends Pet
         parent::__construct($name, $type, $price);
 
         $this->breed = $breed;
-        $this->isIndependent = $isIndependent;;
+        $this->isIndependent = $isIndependent;
+
+        $this->setSoundBehaviour(new CatSound());
+        
     }
 
     public function Meow()

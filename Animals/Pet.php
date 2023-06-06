@@ -3,6 +3,7 @@
 namespace Animals;
 
 use Store\Store;
+use Animals\Behaviours\SoundBehaviour;
 
 class Pet
 {
@@ -15,6 +16,8 @@ class Pet
 
     // Keep a list of all pets created
     private static $allPets = [];
+
+    protected $soundBehaviour;
 
     public function __construct($name, $type, $price)
     {
@@ -74,7 +77,16 @@ class Pet
 
     public function makeSound()
     {
-        echo  $this->name . " is making a sound <br/>";
+        if ($this->soundBehaviour !== null) {
+            $this->soundBehaviour->makeSound();
+        } else {
+            echo $this->name . " has no sound behaviour set.\n";
+        }
+    }
+
+    public function setSoundBehaviour(SoundBehaviour $sb)
+    {
+        $this->soundBehaviour = $sb;
     }
 
     // Get the price of the pet

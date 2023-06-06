@@ -2,6 +2,9 @@
 
 use Store\Store;
 use Patterns\Factories\PetFactory;
+use Animals\Behaviours\CatSound;
+use Animals\Behaviours\DogSound;
+
 
 require_once 'autoloader.php';
 
@@ -162,3 +165,12 @@ echo "<br /><br />";
 $store->displaySoldInventory();
 
 echo "<br /><br />";
+
+$dog1 = new \Animals\Species\Dog("Rover", "Golden Retriever", 500, "Golden Retriever");
+$cat1 = new \Animals\Species\Cat("Fluffy", "Persian Cat", 700, "Persian");
+
+$dog1->setSoundBehaviour(new CatSound());
+$cat1->setSoundBehaviour(new DogSound());
+
+$dog1->makeSound(); // Outputs: "Fluffy: Meowwww"
+$cat1->makeSound();
