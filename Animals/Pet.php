@@ -31,6 +31,11 @@ class Pet
         $store->addPet($this);
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
     // Get the total number of pets ever created
     public static function getPetCount()
     {

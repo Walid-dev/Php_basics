@@ -147,6 +147,15 @@ $petHandlingFacade->buyPet($fatou, $elephant);
 // Now let's make the pet perform its unique sound
 $petHandlingFacade->petMakeSound($elephant);
 
+echo "<br /><br />";
+
+$dogShow = new \Animals\Template\DogShow($dog);
+$catShow = new \Animals\Template\CatShow($cat);
+
+$dogShow->performTrick();
+echo "<br /><br />";
+$catShow->performTrick();
+
 
 echo "<br /><br />";
 
